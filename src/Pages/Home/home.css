@@ -1,0 +1,44 @@
+.homerow{
+    height: 38rem;
+    background-image: url(../../asset/bannerbackground.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:95rem;
+}
+.search-btn{
+    background-color: rgb(242, 39, 73);
+    border: none;
+    border-radius: 15px;
+    width: 80px;
+    color: white;
+    font-weight: bold;
+}
+.home-title{
+
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+    color: rgb(242, 39, 73);
+    letter-spacing: .1em;
+    text-shadow: 
+      -1px -1px 1px rgb(242, 39, 73)1, 
+      2px 2px 1px rgb(240, 151, 166);
+}
+.home-titletwo{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+    color: rgb(242, 39, 73);
+    letter-spacing: .1em;
+    text-shadow: 
+      -1px -1px 1px rgb(242, 39, 73)1, 
+      2px 2px 1px rgb(240, 151, 166);
+}
+.forms{
+    border: solid 2px rgb(255, 12, 52);
+}

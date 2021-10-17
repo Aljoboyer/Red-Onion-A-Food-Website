@@ -1,0 +1,21 @@
+.food{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    height: 450px;
+    width: 350px;
+    
+}
+.food:hover{
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    border-top-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+    transition: 0.5s;
+}
+.order-btn{
+    background-color: rgb(228, 50, 80);
+}
+.order-btn:hover{
+    background-color: rgb(228, 50, 80);
+}
+.fa-arrow-right{
+    color: rgb(255, 255, 255);
+}

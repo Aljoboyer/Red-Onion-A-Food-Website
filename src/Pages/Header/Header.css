@@ -1,0 +1,33 @@
+.navs{
+    background-color: rgb(255, 216, 143);
+}
+.navss{
+    color: black;
+}
+.navss:hover{
+    background-color: rgb(247, 79, 107);
+    border-radius: 5px;
+    color: white;
+}
+.register{
+    background-color: rgb(243, 53, 85);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+.login{
+    background-color: rgb(68, 68, 68);
+    border-radius: 5px;
+    text-align: center;
+}
+.logout{
+    background-color: rgb(243, 85, 111);
+    border-radius: 5px;
+    text-align: center;
+}
+.fa-cart-plus{
+  color: rgb(0, 0, 0);   
+}
+.rowtow{
+    margin-top: 150px;
+}

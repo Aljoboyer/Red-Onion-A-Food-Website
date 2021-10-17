@@ -1,23 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './Pages/Home/Home';
+import Header from './Pages/Header/Header';
+import Login from '../src/Pages/Login/Login';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Register from './Pages/Register/Register';
+import Authcontext from './Context/Authcontext';
+import Orderfood from './Pages/OrderFood/Orderfood';
+import Footer from './Pages/Footer/Footer';
+import Yourcart from './Pages/YourCart/Yourcart';
+import Privateroute from './Privateroute/Privateroute';
+import Resetpassword from './Pages/Resetpass/Resetpassword';
 
-function App() {
+function App( ) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-fluid">
+      <Authcontext>
+          <Router>
+              <Header></Header>
+              <Switch>
+                  <Route exact path="/">
+                      <Home></Home>
+                    </Route>
+                <Route exact path="/login">
+                  <Login></Login>
+                </Route>
+                <Route exact path="/register">
+                    <Register></Register>
+                </Route>
+                <Route exact path="/orderfood/:foodID">
+                    <Orderfood></Orderfood>
+                </Route>
+                <Route exact path="/reset">
+                    <Resetpassword></Resetpassword>
+                </Route>
+                <Privateroute exact path="/yourcart">
+                    <Yourcart></Yourcart>
+                </Privateroute>
+              </Switch>
+              <Footer></Footer>
+          </Router>
+      </Authcontext>
     </div>
   );
 }

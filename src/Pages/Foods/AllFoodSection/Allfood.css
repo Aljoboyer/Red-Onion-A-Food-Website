@@ -1,0 +1,28 @@
+.navitem{
+    cursor: pointer;
+    border: inset 0.2px rgb(140, 139, 139);
+    border-radius: 10px;
+}
+.itemone{
+    color: rgb(228, 50, 80);
+    font-size: 23px;
+    font-weight: 900;
+}
+.itemone:hover{
+    color: rgb(228, 50, 80);
+    font-size: 23px;
+    font-weight: 900;
+}
+.navitem:active{
+    background-color: rgb(5, 5, 5);
+    border-radius: 10px;
+}
+.titletwo{
+    font-size: 3rem;
+    font-family: "Paytone One";
+    color: #202020;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+  text-shadow: 0 13.36px 8.896px #50504f,0 -2px 1px rgb(131, 129, 129);
+  letter-spacing: -4px;
+}
