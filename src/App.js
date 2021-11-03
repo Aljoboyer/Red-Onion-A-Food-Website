@@ -16,6 +16,7 @@ import Footer from './Pages/Footer/Footer';
 import Yourcart from './Pages/YourCart/Yourcart';
 import Privateroute from './Privateroute/Privateroute';
 import Resetpassword from './Pages/Resetpass/Resetpassword';
+import Yourorder from './Pages/Yourorder/Yourorder';
 
 function App( ) {
   return (
@@ -42,6 +43,9 @@ function App( ) {
                 <Privateroute exact path="/yourcart">
                     <Yourcart></Yourcart>
                 </Privateroute>
+                <Route exact path="/yourorder">
+                  <Yourorder></Yourorder>
+                </Route>
               </Switch>
               <Footer></Footer>
           </Router>

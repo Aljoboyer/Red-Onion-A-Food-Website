@@ -1,20 +1,32 @@
 import { useEffect, useState } from "react"
 import { LocalstorageData } from "../Localstorage/Localstorage";
 
-const useCart = (foods) => {
+const useCart = () => {
     const [cart,setCart] = useState([]);
-
+    let SavedCart = LocalstorageData();
+    const keys = Object.keys(SavedCart)
+    console.log('this is', keys)
     useEffect(() => {
-        if(foods.length)
+        fetch('http://localhost:5000/foods/keys', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(keys)
+        })
+        .then(res => res.json())
+        .then(foods => {
+            
+            if(foods.length)
         {
-            let SavedCart = LocalstorageData();
+            
             const NewCart = []
         
             for(const key in SavedCart)
             {
-                let newkey = parseInt(key)
                 
-                const NewFood = foods.find(food => food.id === newkey)
+                
+                const NewFood = foods.find(food => food.key === key)
                 
                 if(NewFood)
                 {
@@ -26,9 +38,11 @@ const useCart = (foods) => {
             setCart(NewCart)
             
         }
-    },[foods])
+        })
+    },[])
 
     return [cart,setCart];
 }
 
 export default useCart;
+

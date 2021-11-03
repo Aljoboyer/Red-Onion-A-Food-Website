@@ -1,22 +1,15 @@
-.navitem{
-    cursor: pointer;
-    border: inset 0.2px rgb(140, 139, 139);
-    border-radius: 10px;
-}
+
 .itemone{
+    margin-left: 20px;
+    background-color: white;
     color: rgb(228, 50, 80);
     font-size: 23px;
     font-weight: 900;
-}
-.itemone:hover{
-    color: rgb(228, 50, 80);
-    font-size: 23px;
-    font-weight: 900;
-}
-.navitem:active{
-    background-color: rgb(5, 5, 5);
+    cursor: pointer;
+    border: none;
     border-radius: 10px;
 }
+
 .titletwo{
     font-size: 3rem;
     font-family: "Paytone One";
@@ -25,4 +18,14 @@
     letter-spacing: -2px;
   text-shadow: 0 13.36px 8.896px #50504f,0 -2px 1px rgb(131, 129, 129);
   letter-spacing: -4px;
+}
+.selected{
+    margin-left: 20px;
+    background-color: rgb(228, 50, 80);
+    color: white;
+    font-size: 23px;
+    font-weight: 900;
+}
+.order-btn{
+    background-color: rgb(228, 50, 80);
 }

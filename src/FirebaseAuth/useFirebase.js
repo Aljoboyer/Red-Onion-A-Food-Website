@@ -1,4 +1,4 @@
-import {updateProfile,sendPasswordResetEmail,onAuthStateChanged,signOut,signInWithEmailAndPassword,createUserWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {getIdToken,updateProfile,sendPasswordResetEmail,onAuthStateChanged,signOut,signInWithEmailAndPassword,createUserWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useEffect, useState } from "react";
 import FirebaseInitialization from '../../src/Firebasesetup/Firebaseinit';
 
@@ -38,7 +38,8 @@ const useFirebase = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-              setUser(user)
+              getIdToken(user).then(idtoken => localStorage.setItem('idtoken', idtoken))
+              setUser(user);
             } else {
               setUser({})
             }

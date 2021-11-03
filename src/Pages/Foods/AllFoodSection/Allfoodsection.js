@@ -1,46 +1,45 @@
 import {Button} from 'react-bootstrap';
 import React, { useState } from 'react';
 import {Col, Nav, Row, Tab, Tabs} from 'react-bootstrap';
-import Breakfast from '../Breakfast/Breakfast';
-import Dinner from '../Dinner/Dinner';
-import Lunch from '../Lunch/Lunch';
 import './Allfood.css'
 import { Link } from 'react-router-dom';
+import Food from '../Food/Food';
+import useFood from '../../FoodHook/FoodHook';
 const Allfoodsection = () => {
+    const {foods,setFoods,pageno,setPageno,foodpages,setFoodpages} = useFood();
     return (
         <div className="container-fluid text-center">
-            <Tab.Container  defaultActiveKey="first">
                 <Row >
-                    <Nav className="justify-content-center">
-                        <Nav.Item   className=" navitem  ms-3 mt-3">
-                        <Nav.Link  className="itemone" eventKey="first">BreakFast</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item  className="  navitem  ms-3 mt-3">
-                        <Nav.Link className="itemone"  eventKey="second">Lunch</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item className=" navitem  ms-3 mt-3">
-                        <Nav.Link className="itemone"  eventKey="third">Dinner</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
+                    <div className="justify-content-center">
+                        <div  className=" navitem  ms-3 mt-3">
+                            {
+                                [...Array(foodpages).keys()].map(number =>
+                                <Button key={number} onClick={() => setPageno(number)}  className={number === pageno ? 'selected' : 'itemone'}>
+                                {
+                                    <div><p>{number === 0 ? 'BreakFast' : ''}</p>
+                                    <p>{number === 1 ? 'Lunch' : ''}</p>
+                                    <p>{number === 2 ? 'Dinner' : ''}</p>
+                                    </div>
+                                    
+                                }
+                                </Button>)
+                            }
+                        </div>
+                    </div>
                 </Row>
                 <Row>
-                    <Tab.Content className="" >
-                        <Tab.Pane eventKey="first">
-                            <h1 className="titletwo text-center mt-4 mb-4">BreakFast Manu</h1>
-                            <Breakfast></Breakfast>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                        <h1 className="titletwo text-center mt-4 mb-4">Lunch Manu</h1>
-                        <Lunch></Lunch>
-                        </Tab.Pane>
-                        <Tab.Pane  eventKey="third">
-                        <h1 className="titletwo text-center  mt-4 mb-4">Dinner Manu</h1>
-                        <Dinner></Dinner>
-                        </Tab.Pane>
-                    </Tab.Content>
+                {
+                <div>
+                    <h1 className="home-title">{pageno === 0 ? 'BreakFast' : ''}</h1>
+                    <h1 className="home-title">{pageno === 1 ? 'Lunch' : ''}</h1>
+                    <h1 className="home-title">{pageno === 2 ? 'Dinner' : ''}</h1>
+                </div>
+            }
+                    {
+                        foods.map(fod => <Food key={fod.id} food={fod}></Food>)
+                    }
                 </Row>
-        </Tab.Container>
-        <Link to="/yourcart"><Button className="order-btn text-center" >Checkout Your Food</Button></Link>
+        <Link to="/yourcart"><Button className="order-btn text-center mt-4" >Checkout Your Food</Button></Link>
     </div>
     );
 };

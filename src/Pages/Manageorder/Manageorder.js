@@ -1,11 +1,11 @@
 import React from 'react';
 
-const placeorder = () => {
+const Manageorder = () => {
     return (
         <div>
-            This is cart
+            
         </div>
     );
 };
 
-export default placeorder;
+export default Manageorder;

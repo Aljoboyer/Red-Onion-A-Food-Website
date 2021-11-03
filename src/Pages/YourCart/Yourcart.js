@@ -2,22 +2,39 @@ import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import useFood from '../FoodHook/FoodHook';
-import { ClearLocalStorage } from '../Localstorage/Localstorage';
+import { ClearLocalStorage, LocalstorageData } from '../Localstorage/Localstorage';
 import useCart from '../Usecart/useCart';
 import Finalcart from './Finalcart';
 const Yourcart = () => {
-    const  [foods,setFoods] = useFood()
+    const  {foods,setFoods} = useFood()
     const [cart,setCart] = useCart(foods);
     const [success, setSuccess] = useState('');
     const [isadd , setIsadd] = useState(true);
     const [icon,setIcon] =  useState('')
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    let SavedCart = LocalstorageData();
     const onSubmit = data => {
-        setCart({})
-        ClearLocalStorage()
-        setSuccess('Order Successfull')
-        setIcon('fas fa-check-circle fa-4x')
-        setIsadd(false)
+        data.food = cart
+        data.order = SavedCart
+        data.status= 'Panding'
+        fetch('http://localhost:5000/foods',{
+            method: 'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+                setCart({})
+                ClearLocalStorage()
+                setSuccess('Order Successfull')
+                setIcon('fas fa-check-circle fa-4x')
+                setIsadd(false)
+        })
+
+  
     }
     let total = 0;
     let Quantity = 0;

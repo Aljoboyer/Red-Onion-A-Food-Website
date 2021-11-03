@@ -7,7 +7,7 @@ import useAuth from '../../Context/useAuth';
 
 const Header = () => {
     const {user,Logout} = useAuth();
-    console.log(user)
+
     const LogOutHandler = () => {
         Logout()
     } 
@@ -19,7 +19,10 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                 <Nav.Link className="fw-bold navss" as={Link} to="/" >Home</Nav.Link>
-                <Nav.Link className="fw-bold navss" as={Link} to="/yourcart">Your Cart <i className="fas fa-cart-plus"></i></Nav.Link>
+                {
+                    user.email ? <><Nav.Link className="fw-bold navss" as={Link} to="/yourcart">Your Cart <i className="fas fa-cart-plus"></i></Nav.Link>
+                    <Nav.Link className="fw-bold navss" as={Link} to="/yourorder">Your Ordered Food</Nav.Link></> : ''
+                }
                 </Nav>
                 <Nav>
                     {

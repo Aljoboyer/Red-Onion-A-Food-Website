@@ -1,30 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import useFood from '../FoodHook/FoodHook';
-import {Col, Row} from 'react-bootstrap';
+import {Col, Row, Spinner,Button} from 'react-bootstrap';
 import './Orderfood.css'
 import Cart from '../Cart/Cart';
 import { AddingLocalStorage, RemoveFoodLocalstorage } from '../Localstorage/Localstorage';
 import useCart from '../Usecart/useCart';
 
 const Orderfood = () => {
-    const [foods,setFoods] = useFood();
-    const [cart,setCart] = useCart(foods);
+    const [OrderedFood,setOrderedFood] = useState();
+    const [cart,setCart] = useCart();
    const {foodID} = useParams();
-   const ID = parseInt(foodID);
-   let OrderedFood = foods.find(food => food.id === ID)
+ 
+
+   useEffect(() => {
+       const url = `http://localhost:5000/foods/${foodID}`;
+       fetch(url)
+       .then(res => res.json())
+       .then(data => {
+        setOrderedFood(data)
+       })
+   },[])
     
     const AddHandler = (food) => {
         setCart([...cart,food])
 
         //adding localstorage
-        AddingLocalStorage(food.id)
+        AddingLocalStorage(food.key)
     }
     const MinusHandler = (food) => {
         cart.pop()
         const newCart = [...cart]
         setCart(newCart)
-        RemoveFoodLocalstorage(food.id)
+        RemoveFoodLocalstorage(food.key)
     }
     return ( 
         <div className="container-fluid " >
@@ -47,7 +55,16 @@ const Orderfood = () => {
                                 </Col>
                             </Row>
                         </Col>
-                    </Row> : ''
+                    </Row> : <Button variant="primary" disabled>
+    <Spinner
+      as="span"
+      animation="grow"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+    Loading...
+  </Button>
                     }
 
         </div>
