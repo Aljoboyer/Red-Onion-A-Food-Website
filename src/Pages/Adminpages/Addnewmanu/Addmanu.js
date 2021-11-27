@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Manageorder = () => {
+const Addmanu = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Manageorder = () => {
     );
 };
 
-export default Manageorder;
+export default Addmanu;

@@ -2,14 +2,20 @@ import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import Logo from '../../asset/logo2.png';
 import './Header.css'
-import {Link} from 'react-router-dom';
+import {Link,useHistory} from 'react-router-dom';
 import useAuth from '../../Context/useAuth';
 
 const Header = () => {
-    const {user,Logout} = useAuth();
-
+    const {setUser,user,Logout} = useAuth();
+    const history = useHistory()
     const LogOutHandler = () => {
         Logout()
+        .then(() => {
+            setUser({})
+            history.push('/')
+          }).catch((error) => {
+            // An error happened.
+          })
     } 
     return (
 <Navbar sticky="top"  collapseOnSelect expand="lg" className="navs">
@@ -22,6 +28,9 @@ const Header = () => {
                 {
                     user.email ? <><Nav.Link className="fw-bold navss" as={Link} to="/yourcart">Your Cart <i className="fas fa-cart-plus"></i></Nav.Link>
                     <Nav.Link className="fw-bold navss" as={Link} to="/yourorder">Your Ordered Food</Nav.Link></> : ''
+                }
+                {
+                    user.email === 'admin@gmail.com'  ? <Nav.Link  className="fw-bold navss" as={Link} to="/manageorder">Manageorder</Nav.Link> : ''
                 }
                 </Nav>
                 <Nav>

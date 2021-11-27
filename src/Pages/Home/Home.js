@@ -1,10 +1,11 @@
 import Button from '@restart/ui/esm/Button';
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, FormControl, InputGroup, Row } from 'react-bootstrap';
 import Choosus from '../ChooseUs/Choosus';
 import Allfoodsection from '../Foods/AllFoodSection/Allfoodsection';
 import './home.css'
 const Home = () => {
+
     return (
         <div className="container-fluid" >
              <div className="homerow d-flex justify-content-center ">
@@ -19,8 +20,9 @@ const Home = () => {
                     placeholder="Search Your Favorite item"
                         aria-label="Recipient's username"
                      aria-describedby="basic-addon2"
+
                 />
-                <Button className="search-btn">
+                <Button  className="search-btn">
                 Button
                 </Button>
              </InputGroup>

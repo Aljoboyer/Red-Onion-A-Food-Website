@@ -17,7 +17,7 @@ import Yourcart from './Pages/YourCart/Yourcart';
 import Privateroute from './Privateroute/Privateroute';
 import Resetpassword from './Pages/Resetpass/Resetpassword';
 import Yourorder from './Pages/Yourorder/Yourorder';
-
+import Manageorder from './Pages/Adminpages/Manageorder/Manageorder'
 function App( ) {
   return (
     <div className="container-fluid">
@@ -45,6 +45,9 @@ function App( ) {
                 </Privateroute>
                 <Route exact path="/yourorder">
                   <Yourorder></Yourorder>
+                </Route>
+                <Route exact path="/manageorder">
+                  <Manageorder></Manageorder>
                 </Route>
               </Switch>
               <Footer></Footer>

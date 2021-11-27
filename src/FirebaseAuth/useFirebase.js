@@ -1,5 +1,6 @@
 import {getIdToken,updateProfile,sendPasswordResetEmail,onAuthStateChanged,signOut,signInWithEmailAndPassword,createUserWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import FirebaseInitialization from '../../src/Firebasesetup/Firebaseinit';
 
 FirebaseInitialization()
@@ -9,6 +10,8 @@ const useFirebase = () => {
     const auth = getAuth();
     const [isloading, setIsloading] = useState(true);
     const [error, setError] = useState('')
+
+   
     //creating user 
     const Registeruser = (email,password,name,url) => {
         setIsloading(true)
@@ -49,11 +52,7 @@ const useFirebase = () => {
     //Log out user
     const Logout = () => {
         
-        signOut(auth).then(() => {
-            setUser({})
-          }).catch((error) => {
-            // An error happened.
-          })
+       return signOut(auth)
     }
   //password reset email
   const PasswordReset = (email) => {
@@ -91,7 +90,7 @@ const useFirebase = () => {
         NamenadImgSet,
         setUser,
         setIsloading,
-        setError
+        setError,
     }
 }
 
