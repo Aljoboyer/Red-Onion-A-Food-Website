@@ -7,7 +7,7 @@ const useCart = () => {
     const keys = Object.keys(SavedCart)
     console.log('this is', keys)
     useEffect(() => {
-        fetch('http://localhost:5000/foods/keys', {
+        fetch('https://frozen-everglades-12066.herokuapp.com/foods/keys', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'

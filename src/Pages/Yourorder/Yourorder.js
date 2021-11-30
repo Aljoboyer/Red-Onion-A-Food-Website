@@ -7,7 +7,7 @@ const Yourorder = () => {
     const [yourorders, setYourorders] = useState([]);
     console.log('from',yourorders)
     useEffect(() => {
-        fetch(`http://localhost:5000/orderfoods?email=${user.email}`,{
+        fetch(`https://frozen-everglades-12066.herokuapp.com/orderfoods?email=${user.email}`,{
             headers:{
                 'authorization':`Bearer ${localStorage.getItem('idtoken')}`
             }
@@ -16,7 +16,7 @@ const Yourorder = () => {
         .then(data => setYourorders(data))
     },[user])
     const DeleteHanlder = (id) => {
-        fetch(`http://localhost:5000/orderfoods/${id}`,{
+        fetch(`https://frozen-everglades-12066.herokuapp.com/orderfoods/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())

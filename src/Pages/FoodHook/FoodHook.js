@@ -6,7 +6,7 @@ const useFood = () => {
     const [pageno, setPageno] = useState(0)
     const size = 6;
     useEffect(() => {
-      fetch(`http://localhost:5000/foods?page=${pageno}&&size=${size}`)
+      fetch(`https://frozen-everglades-12066.herokuapp.com/foods?page=${pageno}&&size=${size}`)
       .then(res =>  res.json())
       .then(data => {
         setFoods(data.foods)

@@ -5,14 +5,14 @@ const Manageorder = () => {
     const [allorder, setAllorder] = useState([]);
     const [neworder, setNeworder] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/allorder')
+        fetch('https://frozen-everglades-12066.herokuapp.com/allorder')
         .then(res => res.json())
         .then(data => setAllorder(data))
     },[neworder])
 
     const OrderAcceptHandler = (id) => {
         const newstatus = {status: 'Approved'} 
-        fetch(`http://localhost:5000/allorders/${id}`,{
+        fetch(`https://frozen-everglades-12066.herokuapp.com/allorders/${id}`,{
             method: 'PUT',
             headers:{
                 'content-type':'application/json'

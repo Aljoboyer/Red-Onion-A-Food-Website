@@ -14,7 +14,7 @@ const Orderfood = () => {
  
 
    useEffect(() => {
-       const url = `http://localhost:5000/foods/${foodID}`;
+       const url = `https://frozen-everglades-12066.herokuapp.com/foods/${foodID}`;
        fetch(url)
        .then(res => res.json())
        .then(data => {
